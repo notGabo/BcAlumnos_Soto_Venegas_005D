@@ -30,8 +30,12 @@ export class AppComponent {
       icon: 'settings-outline',
       name: 'Configuración',
       redirectTo: '/configuracion'
-    }
-    ,
+    },
+    {
+      icon: 'newspaper-outline',
+      name: 'Noticias',
+      redirectTo: '/noticias'
+    },
     {
       icon: 'log-out-outline',
       name: 'Cerrar sesión',

@@ -38,7 +38,15 @@ const routes: Routes = [
   {
     path: 'escribir-qr',
     loadChildren: () => import('./pages/escribir-qr/escribir-qr.module').then(m => m.EscribirQrPageModule)
+  },  {
+    path: 'noticias',
+    loadChildren: () => import('./pages/noticias/noticias.module').then( m => m.NoticiasPageModule)
+  },
+  {
+    path: 'feriados',
+    loadChildren: () => import('./pages/feriados/feriados.module').then( m => m.FeriadosPageModule)
   }
+
 
 
 ];

@@ -39,11 +39,11 @@ export class EscanearQrPage implements OnInit, OnDestroy {
       }
       await BarcodeScanner.hideBackground();
       this.visibilidad = 'hidden';
-      document.querySelector('body').classList.add('scanner-activo');
+      document.querySelector('body').classList.add('fondoInvisible');
       const result = await BarcodeScanner.startScan();
       console.log(result);
       BarcodeScanner.showBackground();
-      document.querySelector('body').classList.remove('scanner-activo');
+      document.querySelector('body').classList.remove('fondoInvisible');
       this.visibilidad = 'show';
       if (result?.hasContent) {//si el usuario escaneo algo
         this.scannedResult = result.content;
@@ -59,7 +59,7 @@ export class EscanearQrPage implements OnInit, OnDestroy {
     this.visibilidad = 'show';
     BarcodeScanner.showBackground();
     BarcodeScanner.stopScan();
-    document.querySelector('body').classList.remove('scanner-activo');
+    document.querySelector('body').classList.remove('fondoInvisible');
   }
 
   ngOnDestroy(): void {
