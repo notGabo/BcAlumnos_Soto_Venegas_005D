@@ -1,37 +1,18 @@
 <ion-header>
   <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-back-button defaultHref="/" text="" color="custom1"></ion-back-button>
+    </ion-buttons>
   </ion-toolbar>
 </ion-header>
 
-<ion-content [fullscreen]="true" id="fondoEsp" class="fondo">
-  <h1 class="ion-text-center">Escanear QR</h1>
-  <br><br><br>
-  <div class="ion-text-center">
-    <ion-button fill="outline" shape="round" color="light" (click)="startScan()" id="boton">
-      Iniciar escaneo
-    </ion-button>
-  </div>
+<ion-content [style.visibility]="'show'">
 
+  <ion-button (click)="startScan()" expand="block" color="tertiary" shape="round">
+    Escanear
+  </ion-button>
 
-  <ion-modal [isOpen]="modalAbierto">
-    <ng-template>
-      <ion-header>
-        <ion-toolbar>
-          <ion-title>Confirmacion</ion-title>
-          <ion-buttons slot="end">
-            <ion-button (click)="abrir(false)">Cerrar</ion-button>
-          </ion-buttons>
-        </ion-toolbar>
-      </ion-header>
-      <ion-content class="ion-padding fondomodal">
-        <ion-icon name="checkmark-circle"></ion-icon>
-        <h1>Presente</h1>
-      </ion-content>
-    </ng-template>
-  </ion-modal>
+  <ion-item *ngIf="scannedResult">
+    <ion-label>Resultado: {{scannedResult}}</ion-label>
+  </ion-item>
 </ion-content>
-
-<ion-footer>
-  <ion-toolbar>
-  </ion-toolbar>
-</ion-footer>
