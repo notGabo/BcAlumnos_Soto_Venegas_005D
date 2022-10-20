@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FeriadosService } from '../../services/feriados.service';
-import { Feriado } from '../../Interfaces/interfaces';
+
 
 @Component({
   selector: 'app-feriados',
@@ -9,14 +9,16 @@ import { Feriado } from '../../Interfaces/interfaces';
 })
 export class FeriadosPage implements OnInit {
 
-  feriado: Feriado[] = [];
+  feriado: any;
 
   constructor(private feriadosService: FeriadosService) { }
 
   ngOnInit() {
     this.feriadosService.getFeriados().subscribe(resp => {
       console.log('feriados', resp);
-      this.feriado.push();
+      this.feriado = resp;
+      console.log(this.feriado);
+      //this.feriado.push('feriados', resp); //no tira error aqui pero si al compilar
     });
 
   }
