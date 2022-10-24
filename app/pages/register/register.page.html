@@ -9,34 +9,27 @@
 
 <ion-content>
 
-  <form #formulario="ngForm" (ngSubmit)="onSubmit()">
+  <form [formGroup]="formularioRegistro" (keyup.enter)="RevisarCorreo()">
     <ion-card>
-
       <ion-item>
         <ion-label>Correo</ion-label>
         <ion-input type="email" placeholder="correo@duoc.cl" name="inputCorreo"
-          pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$" [(ngModel)]="registro.email" required></ion-input>
+          pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$" formControlName="email" required></ion-input>
       </ion-item>
 
       <ion-item>
-        <ion-label>Repetir Correo</ion-label>
-        <ion-input type="email" placeholder="repetir correo" name="repetirInputCorreo"
-          pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$" [(ngModel)]="registro.repetirEmail" required></ion-input>
+        <ion-label>Nombre</ion-label>
+        <ion-input type="text" placeholder="Roberto" name="inputNombre" formControlName="nombre" required></ion-input>
       </ion-item>
 
       <ion-item>
         <ion-label>Contraseña</ion-label>
-        <ion-input type="password" placeholder="*********" name="repetirInputContraseña"
-          [(ngModel)]="registro.Repetirpassword" required></ion-input>
-      </ion-item>
-      <ion-item>
-        <ion-label>Repetir Contraseña</ion-label>
-        <ion-input type="password" placeholder="*********" name="repetirInputContraseña"
-          [(ngModel)]="registro.repetirPassword" required></ion-input>
+        <ion-input type="password" placeholder="*********" name="repetirInputContraseña" formControlName="password"
+          required></ion-input>
       </ion-item>
     </ion-card>
     <center>
-      <ion-button [disabled]="formulario.invalid" type="submit" color="tertiary" shape="round" routerLink="/intro">
+      <ion-button (click)="RevisarCorreo()" type="submit" color="tertiary" shape="round">
         Registrarse</ion-button>
     </center>
   </form>

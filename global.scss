@@ -25,29 +25,31 @@
 @import "~@ionic/angular/css/text-transformation.css";
 @import "~@ionic/angular/css/flex-utils.css";
 
+
+
+
+/* Theme variables */
 .md {
-    --ion-toolbar-background: #9124EC;
+    --ion-toolbar-background: #8f3b76;
     --ion-background-color: #E9DDF3;
-    --ion-text-color: #E9DDF3;
-}
-
-.inputCodigoAlumno {
-    --ion-background-color: #8f3b76;
-    --ion-text-color: #E9DDF3;
-}
-
-.button.botonesCodigoAlumno {
-    background-color: #8f3b76;
-    color: #9124EC;
-}
-
-.aboutUs {
-    --ion-background-color: #9124EC;
     --ion-text-color: #E9DDF3;
 }
 
 .ios {
-    --ion-toolbar-background: #9124EC;
+    --ion-toolbar-background: #8f3b76;
+    ;
     --ion-background-color: #E9DDF3;
     --ion-text-color: #E9DDF3;
+}
+
+.alertcss .alert-wrapper {
+    --background: #8f3b76;
+}
+
+.alertcss .alert-message {
+    color: #E9DDF3;
+}
+
+.alertcss .alert-title {
+    color: #E9DDF3;
 }

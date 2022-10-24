@@ -17,4 +17,13 @@ import { EscanearQrPage } from './escanear-qr.page';
   ],
   declarations: [EscanearQrPage]
 })
-export class EscanearQrPageModule {}
+export class EscanearQrPageModule {
+
+  constructor() { }
+
+  ngOnInit() {
+  }
+
+
+}
+

@@ -1,35 +1,29 @@
-<ion-header>
+<ion-header [hidden]="scanActive">
   <ion-toolbar>
     <ion-buttons slot="start">
       <ion-back-button defaultHref="/" text="" color="custom1"></ion-back-button>
     </ion-buttons>
+    <ion-title>Ingresar a clase</ion-title>
   </ion-toolbar>
 </ion-header>
 
-<ion-content [fullscreen]="true" id="fondoEsp" class="fondo">
-  <h1 class="ion-text-center">Escanear QR</h1>
-  <br><br><br>
-  <div class="ion-text-center">
-    <ion-button fill="outline" shape="round" color="light" (click)="startScan()" id="boton">
-      Iniciar escaneo
-    </ion-button>
-  </div>
+<ion-content [style.--background]="scanActive ? '#00000000' : '#fff'">
 
+  <ion-button (click)="startScan()" expand="full" shape="round" color="tertiary" [hidden]="scanActive">
+    <ion-icon slot="start" name="scan"></ion-icon>
+    Escanear clase
+  </ion-button>
+  <p class="ion-text-center" *ngIf="result && !scanActive">{{ resultado }}></p>
 
-  <ion-modal [isOpen]="modalAbierto">
-    <ng-template>
-      <ion-header>
-        <ion-toolbar>
-          <ion-title>Confirmacion</ion-title>
-          <ion-buttons slot="end">
-            <ion-button (click)="abrir(false)">Cerrar</ion-button>
-          </ion-buttons>
-        </ion-toolbar>
-      </ion-header>
-      <ion-content class="ion-padding fondomodal">
-        <ion-icon name="checkmark-circle"></ion-icon>
-        <h1>Presente</h1>
-      </ion-content>
-    </ng-template>
-  </ion-modal>
+  <ion-row class="scanner-buttons" [hidden]="!scanActive">
+    <ion-col class="ion-no-padding">
+      <ion-button expand="full" shape="round" color="tertiary" (click)="stopScan()">
+        <ion-icon slot="start" name="scan"></ion-icon>
+        Parar escaneo
+      </ion-button>
+    </ion-col>
+  </ion-row>
+
+  <div class="scan-box" [hidden]="!scanActive"></div>
+
 </ion-content>

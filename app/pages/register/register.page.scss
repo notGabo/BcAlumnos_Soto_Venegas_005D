@@ -1,12 +1,19 @@
 .md ion-item {
-    --ion-item-background: #433388;
+    --ion-item-background: #b3396e;
+    --border-color: #b3396e;
 }
 
 .ios ion-item {
-    --ion-item-background: #433388;
+    --ion-item-background: #b3396e;
+    --border-color: #b3396e;
+}
+
+ion-item {
+    --border-color: #b3396e;
 }
 
 // best seen at 1500px or less
+
 
 html,
 body {
@@ -35,7 +42,7 @@ body {
     height: 60px;
     animation: wave 80s cubic-bezier(0.36, 0.45, 0.63, 0.53) infinite, swell 8s ease -1.25s infinite;
     transform: translate3d(0, 0, 0);
-
+    filter: hue-rotate(40deg);
 }
 
 @keyframes wave {

@@ -1,69 +1,64 @@
-import { Component, OnDestroy, OnInit } from '@angular/core';
+import { Component, OnDestroy, OnInit, AfterViewInit } from '@angular/core';
 import { BarcodeScanner } from '@capacitor-community/barcode-scanner';
+import { AlertController } from '@ionic/angular';
 
 @Component({
   selector: 'app-escanear-qr',
   templateUrl: './escanear-qr.page.html',
   styleUrls: ['./escanear-qr.page.scss'],
 })
-export class EscanearQrPage implements OnInit, OnDestroy {
+export class EscanearQrPage implements OnInit, AfterViewInit {
 
-  constructor() { }
+  resultado;
+  scanActivo = false;
+
+  constructor(private alertController: AlertController) { }
 
   ngOnInit() {
-    console.log('abriendo pagescanner');
   }
 
-  qrCodeString = 'This is a secret qr code message';
-  scannedResult: any;
-  visibilidad = 'show';
+  ngAfterViewInit() {
+    BarcodeScanner.prepare();
+  }
 
-
-  async checkPermission() {
-    try {
-      const status = await BarcodeScanner.checkPermission({ force: true });
-      if (!status.granted) {
-        return true; //el usuario dio permisos para la camara  
-      }
-      return false;
-    } catch (error) {
-      console.log(error);
-    }
+  ngOnDestroy() {
+    BarcodeScanner.stopScan();
   }
 
   async startScan() {
-    try {
-      const permission = await this.checkPermission();
-      if (!permission) {
-        return;
+    const permitido = await this.checkPermission();
+    if (permitido) {
+      this.scanActivo = true;
+      const resultado = await BarcodeScanner.startScan();
+      console.log('resultado' + resultado);
+      if (resultado.hasContent) {
+        this.resultado = resultado.content;
+        this.scanActivo = false;
       }
-      await BarcodeScanner.hideBackground();
-      this.visibilidad = 'hidden';
-      document.querySelector('body').classList.add('fondoInvisible');
-      const result = await BarcodeScanner.startScan();
-      console.log(result);
-      BarcodeScanner.showBackground();
-      document.querySelector('body').classList.remove('fondoInvisible');
-      this.visibilidad = 'show';
-      if (result?.hasContent) {//si el usuario escaneo algo
-        this.scannedResult = result.content;
-        console.log(this.scannedResult);
-      }
-    } catch (error) {
-      console.log(error);
-      this.stopScan();
     }
   }
 
-  stopScan() {
-    this.visibilidad = 'show';
-    BarcodeScanner.showBackground();
-    BarcodeScanner.stopScan();
-    document.querySelector('body').classList.remove('fondoInvisible');
+  async checkPermission() {
+    return new Promise(async (resolve, reject) => {
+      const status = await BarcodeScanner.checkPermission({ force: true });
+      if (status.granted) {
+        resolve(true);
+      } else if (status.denied) {
+        const alert = await this.alertController.create({
+          header: 'Error de permisos',
+          message: 'Parece que alguien no le dio permisos a la camarita eh... 😾',
+          buttons: ['OK']
+        });
+
+      } else {
+        resolve(false);
+      }
+    });
   }
 
-  ngOnDestroy(): void {
-    this.stopScan();
+  stopScan() {
+    BarcodeScanner.stopScan();
+    this.scanActivo = false;
   }
 
 }

@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { AlertController, ToastController } from '@ionic/angular';
 import { RegistroService, Usuario } from '../../services/registro.service';
 import { FormGroup, FormControl, Validators, FormBuilder } from '@angular/forms';
-
+import { GetValueService } from '../../services/get-value.service';
 @Component({
   selector: 'app-register',
   templateUrl: './register.page.html',
@@ -13,7 +13,6 @@ export class RegisterPage implements OnInit {
 
   formularioRegistro: FormGroup;
   newUsuario: Usuario = <Usuario>{};
-  usuarios: Usuario[] = [];
 
   constructor(private registroService: RegistroService,
     private alertController: AlertController,
@@ -22,7 +21,8 @@ export class RegisterPage implements OnInit {
     this.formularioRegistro = this.fb.group({
       'email': new FormControl('', Validators.required),
       'nombre': new FormControl('', Validators.required),
-      'password': new FormControl('', Validators.required)
+      'password': new FormControl('', Validators.required),
+      'repetirPassword': new FormControl('', Validators.required),
     });
   }
 
@@ -37,6 +37,7 @@ export class RegisterPage implements OnInit {
       this.newUsuario.email = form.email;
       this.newUsuario.password = form.password;
       this.newUsuario.nombre = form.nombre;
+      this.newUsuario.repetirPassword = form.repetirPassword;
       this.registroService.addDatos(this.newUsuario).then(dato => {
         this.newUsuario = <Usuario>{};
         this.showToast('Usuario creado');
@@ -48,10 +49,8 @@ export class RegisterPage implements OnInit {
   async alertError() {
     const alert = await this.alertController.create({
       header: 'Datos incorrectos',
-      message: 'Por favor, revise los datos ingresados y vuelva a intentarlo',
-      buttons: ['OK'],
-      //custom css
-      cssClass: 'alertcss'
+      message: 'Por favor, rellene todos los campos',
+      buttons: ['OK']
     });
     await alert.present();
   };
@@ -59,26 +58,26 @@ export class RegisterPage implements OnInit {
   async showToast(msg) {
     const toast = await this.toastController.create({
       message: msg,
-      duration: 2000,
-      cssClass: 'toastcss'
+      duration: 2000
     });
     await toast.present();
   };
 
   async RevisarCorreo() {
     var a = 0;
-    var f = this.formularioRegistro.value;
+    var usuarios;
+    var form = this.formularioRegistro.value;
 
     this.registroService.getUsuarios().then(datos => {
-      this.usuarios = datos;
+      usuarios = datos;
       if (!datos || datos.length == 0) {
         console.log('No hay usuarios creados');
       }
       else {
-        for (let obj of this.usuarios) {
-          if (obj.email == f.email) { // aca quedamos.
+        for (let obj of usuarios) {
+          if (obj.email == this.formularioRegistro.e) { // aca quedamos.
             a = 1;
-            console.log(f.email);
+            console.log(this.newUsuario.email);
           }
         }
       }
@@ -95,10 +94,20 @@ export class RegisterPage implements OnInit {
     const alert = await this.alertController.create({
       header: 'Email ya registrado',
       message: 'Por favor, pruebe con otro email',
-      buttons: ['OK'],
-      //custom css
-      cssClass: 'alertcss'
+      buttons: ['OK']
     });
     await alert.present();
+  };
+
+  registro = {
+    email: '',
+    password: '',
+    repetirEmail: '',
+    repetirPassword: ''
+  };
+
+  onSubmit() {
+    console.log('Formulario enviado');
+    console.log(this.registro);
   };
 }

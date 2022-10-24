@@ -12,32 +12,23 @@
     --ion-text-color: #E9DDF3;
 }
 
-.fondomodal {
-    --background: #E9DDF3;
-
-    ion-icon {
-        padding-top: 3rem;
-        display: block;
-        width: 100%;
-        font-size: 10rem;
-        color: purple;
-        text-align: center;
-    }
-
-    h1 {
-        display: block;
-        width: 100%;
-        font-size: 3rem;
-        color: white;
-        text-align: center;
-    }
+.scanner-buttons {
+    position: absolute;
+    bottom: 100px;
+    height: 50px;
+    width: 100vh;
+    z-index: 11;
 }
 
-.fondoInvisible {
-    --background: transparent !important;
-}
-
-.fondo {
-    --background: #E9DDF3;
-    margin-top: 50px;
+.scan-box {
+    border: 2px solid #fff;
+    box-shadow: 0 0 0 100vmax rgba(0, 0, 0, 0.5);
+    content: '';
+    display: block;
+    left: 50%;
+    height: 300px;
+    position: absolute;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    width: 300px;
 }

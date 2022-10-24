@@ -6,18 +6,27 @@ import { IonicModule, IonicRouteStrategy } from '@ionic/angular';
 
 import { AppComponent } from './app.component';
 import { AppRoutingModule } from './app-routing.module';
-import { BarcodeScanner } from '@capacitor-community/barcode-scanner';
 import { HttpClientModule } from '@angular/common/http';
+
+import { IonicStorageModule } from '@ionic/storage-angular';
+import { Drivers } from '@ionic/storage';
+import { ReactiveFormsModule } from '@angular/forms';
 
 
 
 @NgModule({
   declarations: [AppComponent],
-  imports: [BrowserModule, IonicModule.forRoot(), AppRoutingModule, HttpClientModule],
+  imports: [BrowserModule, IonicModule.forRoot(), AppRoutingModule, HttpClientModule,
+    IonicStorageModule.forRoot({
+      name: 'mydb',
+      driverOrder: [Drivers.IndexedDB, Drivers.LocalStorage]
+    })
+  ],
   providers: [{ provide: RouteReuseStrategy, useClass: IonicRouteStrategy },
   ],
   bootstrap: [AppComponent],
 })
-export class AppModule { }
+export class AppModule {
+}
 
 

@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { MenuController } from '@ionic/angular';
 import { Router } from '@angular/router';
 
+
 interface Componente {
   icon: string;
   name: string;
@@ -19,7 +20,12 @@ export class AppComponent {
     {
       icon: 'home-outline',
       name: 'Inicio',
-      redirectTo: '/inicio'
+      redirectTo: '/inicio',
+    },
+    {
+      icon: 'person-circle-outline',
+      name: 'Mi perfil',
+      redirectTo: '/perfil'
     },
     {
       icon: 'log-in-outline',
@@ -35,11 +41,6 @@ export class AppComponent {
       icon: 'newspaper-outline',
       name: 'Noticias',
       redirectTo: '/noticias'
-    },
-    {
-      icon: 'log-out-outline',
-      name: 'Cerrar sesión',
-      redirectTo: '/intro'
     }
   ];
 
