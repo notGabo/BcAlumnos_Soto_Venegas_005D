@@ -14,6 +14,7 @@ export class GetValueService {
   public static correoProfesor: string;
   public static correoAlumno: string;
   public static nombre: string;
+  public static apellido: string;
   public static email: string;
   constructor() { }
 }

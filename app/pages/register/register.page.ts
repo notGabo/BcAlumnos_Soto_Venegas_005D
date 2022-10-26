@@ -22,7 +22,8 @@ export class RegisterPage implements OnInit {
     this.formularioRegistro = this.fb.group({
       'email': new FormControl('', Validators.required),
       'nombre': new FormControl('', Validators.required),
-      'password': new FormControl('', Validators.required)
+      'password': new FormControl('', Validators.required),
+      'apellido': new FormControl('', Validators.required)
     });
   }
 
@@ -36,7 +37,8 @@ export class RegisterPage implements OnInit {
     } else {
       this.newUsuario.email = form.email;
       this.newUsuario.password = form.password;
-      this.newUsuario.nombre = form.nombre;
+      this.newUsuario.nombre = form.nombre.charAt(0).toUpperCase() + form.nombre.slice(1).toLowerCase();
+      this.newUsuario.apellido = form.apellido.charAt(0).toUpperCase() + form.apellido.slice(1).toLowerCase();
       this.registroService.addDatos(this.newUsuario).then(dato => {
         this.newUsuario = <Usuario>{};
         this.showToast('Usuario creado');

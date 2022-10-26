@@ -11,7 +11,7 @@ import { HttpClientModule } from '@angular/common/http';
 import { IonicStorageModule } from '@ionic/storage-angular';
 import { Drivers } from '@ionic/storage';
 import { ReactiveFormsModule } from '@angular/forms';
-
+import { QRScanner } from "@ionic-native/qr-scanner/ngx";
 
 
 @NgModule({
@@ -23,7 +23,7 @@ import { ReactiveFormsModule } from '@angular/forms';
     })
   ],
   providers: [{ provide: RouteReuseStrategy, useClass: IonicRouteStrategy },
-  ],
+    QRScanner],
   bootstrap: [AppComponent],
 })
 export class AppModule {

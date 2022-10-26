@@ -19,6 +19,10 @@ export class PerfilPage implements OnInit {
     return GetValueService.nombre;
   }
 
+  getApellido() {
+    return GetValueService.apellido;
+  }
+
   getCorreo() {
     return GetValueService.email;
   }

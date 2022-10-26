@@ -19,7 +19,14 @@
 
       <ion-item>
         <ion-label>Nombre</ion-label>
-        <ion-input type="text" placeholder="Roberto" name="inputNombre" formControlName="nombre" required></ion-input>
+        <ion-input type="text" pattern="[A-za-z]{3,12}" placeholder="Roberto" name="inputNombre"
+          formControlName="nombre" required></ion-input>
+      </ion-item>
+
+      <ion-item>
+        <ion-label>Apellido</ion-label>
+        <ion-input type="text" pattern="[A-za-z]{3,12}" placeholder="Olivares" name="inputApellido"
+          formControlName="apellido" required></ion-input>
       </ion-item>
 
       <ion-item>

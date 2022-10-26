@@ -1,4 +1,4 @@
-<ion-header [hidden]="scanActive">
+<ion-header>
   <ion-toolbar>
     <ion-buttons slot="start">
       <ion-back-button defaultHref="/" text="" color="custom1"></ion-back-button>
@@ -7,23 +7,8 @@
   </ion-toolbar>
 </ion-header>
 
-<ion-content [style.--background]="scanActive ? '#00000000' : '#fff'">
-
-  <ion-button (click)="startScan()" expand="full" shape="round" color="tertiary" [hidden]="scanActive">
-    <ion-icon slot="start" name="scan"></ion-icon>
-    Escanear clase
+<ion-content>
+  <ion-button (click)="startScan()" expand="block" fill="clear" shape="round">
+    Click me
   </ion-button>
-  <p class="ion-text-center" *ngIf="result && !scanActive">{{ resultado }}></p>
-
-  <ion-row class="scanner-buttons" [hidden]="!scanActive">
-    <ion-col class="ion-no-padding">
-      <ion-button expand="full" shape="round" color="tertiary" (click)="stopScan()">
-        <ion-icon slot="start" name="scan"></ion-icon>
-        Parar escaneo
-      </ion-button>
-    </ion-col>
-  </ion-row>
-
-  <div class="scan-box" [hidden]="!scanActive"></div>
-
 </ion-content>

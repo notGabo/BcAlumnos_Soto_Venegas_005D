@@ -44,6 +44,7 @@ export class LoginPage implements OnInit {
           this.navController.navigateForward('/inicio');
           GetValueService.email = obj.email;
           GetValueService.nombre = obj.nombre;
+          GetValueService.apellido = obj.apellido;
           return;
         }
       }

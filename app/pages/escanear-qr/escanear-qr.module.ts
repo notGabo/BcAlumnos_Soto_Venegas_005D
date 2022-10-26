@@ -7,13 +7,15 @@ import { IonicModule } from '@ionic/angular';
 import { EscanearQrPageRoutingModule } from './escanear-qr-routing.module';
 
 import { EscanearQrPage } from './escanear-qr.page';
+import { QRScanner } from "@ionic-native/qr-scanner/ngx";
 
 @NgModule({
   imports: [
     CommonModule,
     FormsModule,
     IonicModule,
-    EscanearQrPageRoutingModule
+    EscanearQrPageRoutingModule,
+    QRScanner
   ],
   declarations: [EscanearQrPage]
 })
