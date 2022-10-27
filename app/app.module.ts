@@ -11,7 +11,7 @@ import { HttpClientModule } from '@angular/common/http';
 import { IonicStorageModule } from '@ionic/storage-angular';
 import { Drivers } from '@ionic/storage';
 import { ReactiveFormsModule } from '@angular/forms';
-import { QRScanner } from "@ionic-native/qr-scanner/ngx";
+import { BarcodeScanner } from '@awesome-cordova-plugins/barcode-scanner/ngx';
 
 
 @NgModule({
@@ -23,7 +23,7 @@ import { QRScanner } from "@ionic-native/qr-scanner/ngx";
     })
   ],
   providers: [{ provide: RouteReuseStrategy, useClass: IonicRouteStrategy },
-    QRScanner],
+    BarcodeScanner],
   bootstrap: [AppComponent],
 })
 export class AppModule {
