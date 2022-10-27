@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { AlertController, ToastController } from '@ionic/angular';
 import { RegistroService, Usuario } from '../../services/registro.service';
 import { FormGroup, FormControl, Validators, FormBuilder } from '@angular/forms';
+import { NavController } from '@ionic/angular';
 
 @Component({
   selector: 'app-register',
@@ -18,7 +19,8 @@ export class RegisterPage implements OnInit {
   constructor(private registroService: RegistroService,
     private alertController: AlertController,
     private toastController: ToastController,
-    private fb: FormBuilder) {
+    private fb: FormBuilder,
+    private navController: NavController) {
     this.formularioRegistro = this.fb.group({
       'email': new FormControl('', Validators.required),
       'nombre': new FormControl('', Validators.required),
@@ -41,11 +43,35 @@ export class RegisterPage implements OnInit {
       this.newUsuario.apellido = form.apellido.charAt(0).toUpperCase() + form.apellido.slice(1).toLowerCase();
       this.registroService.addDatos(this.newUsuario).then(dato => {
         this.newUsuario = <Usuario>{};
+        this.alertRegistro();
         this.showToast('Usuario creado');
       });
       this.formularioRegistro.reset();
     }
   };
+
+
+  async alertRegistro() {
+    const alertRegistro = await this.alertController.create({
+      header: '¡Cuenta creada!',
+      message: '¿Deseas loguearte?',
+      buttons: [
+        {
+          text: 'Si',
+          role: 'Confirm',
+          handler: () => {
+            this.navController.navigateForward('/login');
+          },
+        },
+        {
+          text: 'No',
+          role: 'Cancel'
+        }
+      ],
+      cssClass: 'alertcss'
+    })
+    await alertRegistro.present();
+  }
 
   async alertError() {
     const alert = await this.alertController.create({

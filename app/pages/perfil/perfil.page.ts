@@ -29,7 +29,7 @@ export class PerfilPage implements OnInit {
 
   //close sesion
   cerrarSesion() {
-    localStorage.clear(); //limpia el local storage, se puede usar para cerrar sesion
+    localStorage.clear(); //limpia el estado de ingresado en el localstorage, se puede usar para cerrar sesionb
     this.navController.navigateForward('/intro');
     this.showToast('Se ha cerrado sesion');
   };
