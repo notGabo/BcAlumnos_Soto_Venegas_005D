@@ -34,15 +34,19 @@ Luego de todo ese procedimiento, se necesitaran instalar los siguientes modulos 
 
 ```npm install --save @awesome-cordova-plugins/barcode-scanner```
 
-Ya hecho esto, es posible emular la aplicacion mediante el browser preferido, para poder hacerlo solo debemos ejecutar en la terminal:
 
-```ionic serve --lab```
 
 Existe la posibilidad de que la Api de los feriados no cargue como se deba. Por lo que se debe implementar una extension que habilite el protocolo CORS en el header.
 https://chrome.google.com/webstore/detail/allow-cors-access-control/lhobafahddgcelffkeicbaginigeejlf
 Una vez instalada, solo se debe activar desde el panel de extensiones.
 
-Decirle que si para poder instalar el modulo necesario para emular el ambiente de IOS y Android y listo!
+
+Ya hecho esto, es posible emular la aplicacion mediante el browser preferido. Para poder hacerlo solo debemos ejecutar en la terminal:
+
+```ionic serve --lab```
+
+Se debera aceptar la instalacion del modulo lab para que este ambiente de emulacion se ejecute de manera adecuada
+
 
 ### Aviso
 
