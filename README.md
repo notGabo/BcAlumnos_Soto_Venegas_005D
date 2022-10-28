@@ -24,8 +24,7 @@ con:
   
 Una vez hecho esto, deberas eliminar la carpeta llamada 'src' y reemplazar el nombre de la carpeta 'BcAlumnos_Soto_Venegas_005D' por 'src'.
 
-Luego de todo ese procedimiento, debes entrar a la carpeta 'src' que acabamos de reemplazar, y ejecutar el archivo ```modulosNode.bat```, que contiene los modulos necesarios para el funcionamiento de la aplicacion.
-En caso de que este archivo fallase, pueden ser instalados manualmente con los siguientes comandos
+Luego de todo ese procedimiento, se necesitaran instalar los siguientes modulos para el debido funcionamiento de la aplicacion
 
 ```npm install --save @ionic/storage```
 
@@ -38,6 +37,10 @@ En caso de que este archivo fallase, pueden ser instalados manualmente con los s
 Ya hecho esto, es posible emular la aplicacion mediante el browser preferido, para poder hacerlo solo debemos ejecutar en la terminal:
 
 ```ionic serve --lab```
+
+Existe la posibilidad de que la Api de los feriados no cargue como se deba. Por lo que se debe implementar una extension que habilite el protocolo CORS en el header.
+https://chrome.google.com/webstore/detail/allow-cors-access-control/lhobafahddgcelffkeicbaginigeejlf
+Una vez instalada, solo se debe activar desde el panel de extensiones.
 
 Decirle que si para poder instalar el modulo necesario para emular el ambiente de IOS y Android y listo!
 
