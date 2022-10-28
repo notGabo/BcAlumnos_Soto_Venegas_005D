@@ -35,7 +35,6 @@ Luego de todo ese procedimiento, se necesitaran instalar los siguientes modulos 
 ```npm install --save @awesome-cordova-plugins/barcode-scanner```
 
 
-
 Existe la posibilidad de que la Api de los feriados no cargue como se deba. Por lo que se debe implementar una extension que habilite el protocolo CORS en el header.
 https://chrome.google.com/webstore/detail/allow-cors-access-control/lhobafahddgcelffkeicbaginigeejlf
 Una vez instalada, solo se debe activar desde el panel de extensiones.
