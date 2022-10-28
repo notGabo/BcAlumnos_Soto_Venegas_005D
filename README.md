@@ -1,6 +1,6 @@
 # BcAlumnos_Soto_Venegas_005D (Booking Class)
 
-Esta es la segunda entrega del trabajo que estamos realizando con mi compare <a href="https://github.com/je4n83">Jean Venegas</a> para el ramo de 
+Esta es la segunda entrega del trabajo que estamos realizando con mi compañero <a href="https://github.com/je4n83">Jean Venegas</a> para el ramo de 
 Programacion de aplicaciones moviles instruido por la profesora Vivivana Poblete.
 
 ### Instalacion del proyecto
